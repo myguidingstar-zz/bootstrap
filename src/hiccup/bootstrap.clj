@@ -3,7 +3,7 @@
             clojure.pprint))
 
 (defmacro meta-tags
-  "Add meta-tags quickly"
+  "Add meta-tags quickly by providing a map of meta-tags."
   [m]
 
   `(for [[k# v#] ~m]
@@ -11,9 +11,9 @@
 
 (defmacro favicon
   "Add favicon to HTML page"
-  [file]
+  [path]
 
-  [:link {:rel "shortcut icon" :href file}])
+  [:link {:rel "shortcut icon" :href path}])
 
 (defmacro apple-touch-icon
   "A commonly used touch icon group"
@@ -61,7 +61,6 @@
   "Bootstrap style pack"
   (array-map  :bootstrap "/assets/css/bootstrap.css"
               :responsive "/assets/css/bootstrap-responsive.css"
-              :docs "/assets/css/docs.css"
               :prettify "/assets/js/google-code-prettify/prettify.css"))
 
 (defn get-assets
@@ -76,5 +75,7 @@
            :else
            (apply vector (map #(get m %) v)))))
 
-(defmacro format-code [code]
+(defmacro format-code
+  "Get a Clojure block of code and return formatted code as string."
+  [code]
   `(clojure.pprint/write (quote ~code) :pretty true :stream nil))
