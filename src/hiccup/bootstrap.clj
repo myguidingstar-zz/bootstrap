@@ -79,3 +79,7 @@
   "Get a Clojure block of code and return formatted code as string."
   [code]
   `(clojure.pprint/write (quote ~code) :pretty true :stream nil))
+
+(defn format-code-str
+  [string]
+  (clojure.pprint/write (read-string string) :pretty true :stream nil))

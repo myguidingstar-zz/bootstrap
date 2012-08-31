@@ -38,3 +38,16 @@
               " \"A function that do nothing\"\n"
               " [args]\n"
               " (str \"I won't do anything!\"))"))))
+
+(deftest format-code-str-test
+  (is (= (format-code-str
+          (str
+           '(defn foo-function
+            "A function that do nothing"
+            [args]
+            (str "I won't do anything!"))))
+         (str "(defn\n"
+              " foo-function\n"
+              " \"A function that do nothing\"\n"
+              " [args]\n"
+              " (str \"I won't do anything!\"))"))))
