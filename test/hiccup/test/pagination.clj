@@ -37,32 +37,31 @@
            [:li.active [:a {:href "/some/url/4"} 4]]
            [:li [:a {:href "/some/url/5"} 5]]])))
 
-(comment
-  (deftest pagination-test
-    (is (= (pagination [1 3 7] #(str "/new/url/" %1))
-           [:ul
-            [:li [:a {:href "/new/url/1"} 1]]
-            [:li [:a {:href "/new/url/2"} 2]]
-            [:li.active [:a {:href "/new/url/3"} 3]]
-            [:li [:a {:href "/new/url/4"} 4]]
-            [:li [:a {:href "#"} "..."]]
-            [:li [:a {:href "/new/url/7"} 7]]]))
+(deftest pagination-test
+  (is (= (pagination [1 3 7] #(str "/new/url/" %1))
+         [:ul
+          [:li [:a {:href "/new/url/1"} 1]]
+          [:li [:a {:href "/new/url/2"} 2]]
+          [:li.active [:a {:href "/new/url/3"} 3]]
+          [:li [:a {:href "/new/url/4"} 4]]
+          [:li [:a {:href "#"} "..."]]
+          [:li [:a {:href "/new/url/7"} 7]]]))
 
-    (is (= (pagination [1 1 5] #(str "/new/url/" %1))
-           [:ul
-            [:li.active [:a {:href "/new/url/1"} 1]]
-            [:li [:a {:href "/new/url/2"} 2]]
-            [:li [:a {:href "#"} "..."]]
-            [:li [:a {:href "/new/url/5"} 5]]]))
+  (is (= (pagination [1 1 5] #(str "/new/url/" %1))
+         [:ul
+          [:li.active [:a {:href "/new/url/1"} 1]]
+          [:li [:a {:href "/new/url/2"} 2]]
+          [:li [:a {:href "#"} "..."]]
+          [:li [:a {:href "/new/url/5"} 5]]]))
 
-    (is (= (pagination [1 4 6] #(str "/new/url/" %1))
-           [:ul
-            [:li [:a {:href "/new/url/1"} 1]]
-            [:li [:a {:href "#"} "..."]]
-            [:li [:a {:href "/new/url/3"} 3]]
-            [:li.active [:a {:href "/new/url/4"} 4]]
-            [:li [:a {:href "/new/url/5"} 5]]
-            [:li [:a {:href "/new/url/6"} 6]]]))))
+  (is (= (pagination [1 4 6] #(str "/new/url/" %1))
+         [:ul
+          [:li [:a {:href "/new/url/1"} 1]]
+          [:li [:a {:href "#"} "..."]]
+          [:li [:a {:href "/new/url/3"} 3]]
+          [:li.active [:a {:href "/new/url/4"} 4]]
+          [:li [:a {:href "/new/url/5"} 5]]
+          [:li [:a {:href "/new/url/6"} 6]]])))
 
 (deftest total-pages-test
   (is (= (total-pages 20 3) 7))

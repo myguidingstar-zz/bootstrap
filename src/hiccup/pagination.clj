@@ -31,8 +31,8 @@
 (defn pagination [[start current end] fn-page->url]
   (pagination-view
     (pagination-list start current end)
-    fn-page->url
-    current))
+    current
+    fn-page->url))
 
 (defn total-pages [total-items items-per-page]
   "Calculate number of pages from total-items and items-per-page"
