@@ -66,14 +66,15 @@
 (defn get-assets
   "Get js/css assets' paths"
   ([m]
-      (apply vector (vals m)))
+     (get-assets m :all))
   ([m v]
-     (cond (= :all v)
-           (get-assets m)
-           (= nil v)
-           []
-           :else
-           (apply vector (map #(get m %) v)))))
+     (filter string?
+             (cond (= :all v)
+                   (apply vector (vals m))
+                   (= nil v)
+                   []
+                   :else
+                   (apply vector (map #(get m %) v))))))
 
 (defmacro format-code
   "Get a Clojure block of code and return formatted code as string."

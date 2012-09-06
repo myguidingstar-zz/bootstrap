@@ -24,7 +24,11 @@
          ["a.js" "b.js" "c.js"]))
 
   (is (= (get-assets {:a "a.js" :b "b.js"} nil)
-         [])))
+         []))
+
+  (is (= (get-assets (array-map  :a "a.js" :b "b.js" :c "c.js")
+                     [:a :b :d])
+         ["a.js" "b.js"])))
 
 (deftest format-code-test
   (is (= (format-code
